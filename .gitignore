@@ -1,0 +1,19 @@
+# Dependency directories
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Optional: Log files and local .env files
+*.log
+.env
+
+# Optional: OS and editor-specific files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Optional: Configuration files
+config.js
