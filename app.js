@@ -1,7 +1,10 @@
 //jshint esversion:6
+require('dotenv').config()
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+var md5 = require('md5');
+const PORT = process.env.PORT;
 
 const User = require("./userModel");
 
@@ -71,7 +74,7 @@ app.post("/register", (req, res) => {
 
   const newUser = new User({
     email: req.body.username,
-    password: req.body.password,
+    password: md5(req.body.password),
   });
   newUser.save()
   .then(savedUser => {
@@ -83,10 +86,11 @@ app.post("/register", (req, res) => {
       res.send("Error saving user:", err);
     })
 
+
   });
 
 
-app.listen(3000, (req, res) => {
-  console.log("Server started on port 3000.");
-  console.log("http://localhost:3000/");
+app.listen(PORT, (req, res) => {
+  console.log("Server started on port " + PORT );
+  console.log("http://localhost:" + PORT);
 });
